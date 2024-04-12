@@ -16,7 +16,7 @@ El proyecto se divide en 5 hitos incrementales que permitirán desarrollar el si
 
 ## Requerimientos
 
-### 1. Levantar primer proyecto en Django (1 Punto)
+### 1. Levantar primer proyecto en Django 
 
 - Utilizar el administrador de paquetes PIP para la instalación de los componentes Django.
 - Utilizar el utilitario `manage.py` para la creación de un nuevo proyecto Django.
