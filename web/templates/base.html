@@ -14,7 +14,9 @@
     {% block 'navbar' %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Onlyflans</a>
+            {% load static %}
+            <img src={% static 'logo2.png' %} style="width: 150px;" alt="">
+            <!--<a class="navbar-brand" href="#">Onlyflans</a>-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -38,11 +40,19 @@
     {% endblock %}
 
     {% block 'header' %}
-
-    {% load static %}
-    <div style="background: red;">
-        <img src={% static 'logo.png' %} style="width: 300px;" alt="">
-    </div>
+    <div class="card text-center">
+      
+        <div class="card-body">
+            {% load static %}
+            <div style="background: red;">
+                <img src={% static 'logo.png' %} style="width: 300px;" alt="">
+            </div>
+        </div>
+        <div class="card-footer text-body-secondary">
+          Lo mejor en flanes
+        </div>
+      </div>
+    
 
     {% endblock %}
     {% block 'contenido' %}
@@ -52,9 +62,16 @@
     {% endblock %}
 
     {% block 'footer' %}
-    <div style="background: green;">
-        FOTTERSILLO BELLO
-    </div>
+    <footer class="footer mt-5">
+        <div class="card text-bg-success">
+                <div class="card-body">
+            <blockquote class="blockquote">
+            <p>Footer Only Flans</p>
+            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+          </blockquote>
+        </div>
+      </div>
+    </footer>
     {% endblock %}
 
     {% block 'javascript' %}
