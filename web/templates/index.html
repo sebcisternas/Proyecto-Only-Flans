@@ -1,5 +1,23 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block 'contenido'%}
+<h1 class="about-h1 text-center text-info">Nuestros Productos</h1>
+<div class="container-fluid d-flex justify-content-center text-info" style="text-align: justify;">
+ 
+  <div class="row justify-content-center ">
+    
+    {% for flan in flanes %}
+    <div class="col-md-2 col-sm-2 m-2 p-4 justify-content-center align-items-center">
+      <div class="card" style="width: 18rem">
+        <img src="{{flan.image_url}}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{flan.name}}</h5>
+          <p class="card-text">{{flan.descripcion}}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
 
-{% block 'contenido'%}
-<h1>Esto es contenido del index </h1>
-{% endblock %}
+    {%endfor%}
+  </div>
+</div>
+  {% endblock %}
+</div>

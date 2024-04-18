@@ -1,0 +1,45 @@
+{% extends 'base.html' %} 
+{% block 'contenido' %}
+
+<h1 class="about-h1 text-center text-info">Contacto</h1>
+
+<form method="POST">
+  {% csrf_token %} {{ form.non_field_errors }}
+
+  <div class="wrapper">
+    <div class="inputtext-wrapper inputtext inputtext--md">
+      <label for="customer_email">{{ form.customer_email.label_tag }}</label>
+      {{ form.customer_email }}
+      <i class="ti ti-check"></i>
+      <div class="text-danger">{{form.customer_email.errors}}</div>
+    </div>
+
+    <div class="inputtext-wrapper inputtext inputtext--md">
+      <label for="customer_name">{{form.customer_name.label_tag}}</label>
+      {{form.customer_name}}
+      <i class="ti ti-check"></i>
+      <div class="text-danger">{{form.customer_name.errors}}</div>
+    </div>
+
+    <div class="inputtext-wrapper inputtext inputtext--md">
+      <label for="message">{{form.message.label_tag}}</label>
+      {{form.message}}
+      <i class="ti ti-check"></i>
+      <div class="text-danger">{{form.message.errors}}</div>
+
+    </div>
+
+    <div class="btn-primary m-4">
+      <button type="submit" class="button button--md button--filled button--primary button--full">
+        <span class="button-label">Enviar</span>
+      </button>
+    </div>
+
+  </div>
+</form>
+{% endblock 'contenido' %}
+
+
+
+
+

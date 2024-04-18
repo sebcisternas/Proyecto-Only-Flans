@@ -1,0 +1,225 @@
+* {
+    font-family: 'Inter';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+  }
+
+  body {
+    background-image: url('/static/img/fondo3.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}  
+  .wrapper {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Inter';
+  }
+  label,
+  input {
+    display: flex;
+  }
+  .inputtext-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-width: 360px;
+  }
+  .inputtext-wrapper+.inputtext-wrapper {
+    margin-top: 28px;
+  }
+  .inputtext-wrapper+.button-wrapper {
+    margin-top: 28px;
+  }
+  .error-message {
+    display: none;
+    position: absolute;
+    bottom: -20px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 18px;
+    color: #e51940;
+  }
+  .error-message .ti {
+    font-size: 16px;
+  }
+  .inputtext {
+    width: 100%;
+  }
+  .inputtext label {
+    width: 100%;
+    color: #00061a;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .inputtext label i {
+    margin-left: 4px;
+    color: #2051f8;
+  }
+  .inputtext input {
+    padding-left: 12px;
+    padding-right: 12px;
+    color: #00061a;
+    font-weight: 400;
+    border: 1px solid #acb1c3;
+    border-radius: 8px;
+    transition: all 0.2s;
+    box-shadow: 0 0 0 0 #fff;
+  }
+  .inputtext input::-webkit-input-placeholder {
+    color: #9297aa;
+  }
+  .inputtext input:hover {
+    border: 1px solid #dbdfe6;
+    box-shadow: 0 0 0 3px #dbdfe6;
+  }
+  .inputtext input:focus,
+  .inputtext input:focus-visible {
+    outline: none;
+    border-color: #2051f8;
+    box-shadow: 0 0 0 3px #d6dfff;
+  }
+  .inputtext.error-input input {
+    border-color: #e51940;
+    box-shadow: 0 0 0 3px #fbdae1;
+  }
+  .inputtext.error-input.error-input--secondary .error-message--secondary {
+    display: block;
+  }
+  .inputtext.error-input.error-input--primary .error-message--primary {
+    display: block;
+  }
+  .inputtext.valid-input .ti-check {
+    color: #2051f8;
+    opacity: 1;
+    transform: scale(1);
+  }
+  .inputtext .ti-check {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    font-size: 18px;
+    color: #00061a;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.3s ease-in;
+  }
+  .inputtext.inputtext--md label {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .inputtext.inputtext--md input {
+    height: 40px;
+    font-size: 13px;
+    line-height: 18px;
+  }
+  .button-wrapper {
+    width: 100%;
+    display: flex;
+    max-width: 100px;
+    align-content: end;
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  
+  .button {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 4px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .button .button-label {
+    font-weight: 500;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  .button.button--full {
+    width: 100%;
+  }
+  .button.button--md {
+    padding: 10px 12px 10px 12px;
+  }
+  .button.button--md .button-label {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .button.button--md .ti {
+    font-size: 18px;
+  }
+  .button.button--filled .button-label,
+  .button.button--filled .ti {
+    color: #fff;
+  }
+  .button.button--filled.button--primary {
+    background-color: #2051f8;
+  }
+  .button.button--filled.button--primary:hover {
+    background-color: #042aaf;
+  }
+  .button.button--stroke .button-label,
+  .button.button--stroke .ti {
+    color: #00061a;
+  }
+  .button.button--stroke.button--neutral {
+    background-color: #fff;
+    border: 1px solid #acb1c3;
+  }
+  .button.button--stroke.button--neutral:hover {
+    background-color: #eff2f5;
+  }
+
+/* tipoGrafia */
+
+  .about-paragraph {
+    font-family: "Farsan", cursive;
+    font-size: 30px;
+    font-weight: 1000px;
+    font-style: italic;
+    text-align: justify;
+}
+
+.about-h1{
+  font-family: "Farsan", cursive;
+  font-size: 60px;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.nav-link{
+  font-family: "Calibri light";
+  color: white;
+  font-size: 20px;
+  font-weight: 700px;
+  ;
+}
+
+
+
+.fondo-header {
+  background-image: url('/static/img/fondo_header.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#card-header{
+  background: rgb(255, 255, 255);
+  max-width: 600px;
+  border-radius: 50px
+}

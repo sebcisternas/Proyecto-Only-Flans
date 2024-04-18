@@ -4,7 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Farsan&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://kit.fontawesome.com/11dbf52181.js" crossorigin="anonymous"></script>
     <title>{% block 'title' %} Bienvenido a onlyflans {% endblock%}</title>
 </head>
 
@@ -12,10 +19,10 @@
 
     
     {% block 'navbar' %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-success rounded text-center  ">
         <div class="container-fluid">
             {% load static %}
-            <img src={% static 'logo2.png' %} style="width: 150px;" alt="">
+            <img src={% static 'img/logo2.png' %} style="width: 100px;" alt="">
             <!--<a class="navbar-brand" href="#">Onlyflans</a>-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -25,13 +32,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href={% url "index" %}>Index</a>
+                        <a class="nav-link active " aria-current="page" href={% url "index" %}><i class="fa-solid fa-house px-2"></i></i></i>Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href={% url "about" %}>about</a>
+                        <a class="nav-link active" aria-current="page" href={% url "about" %}><i class="fa-solid fa-circle-info px-2"></i>Acerca</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href={% url "welcome" %}>welcome</a>
+                        <a class="nav-link active" aria-current="page" href={% url "welcome" %}><i class="fa-solid fa-door-open px-2"></i>Bienvenido</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href={% url "contacto" %}><i class="fa-solid fa-address-book px-2"></i>Contacto</a>
                     </li>
                 </ul>
             </div>
@@ -40,21 +50,19 @@
     {% endblock %}
 
     {% block 'header' %}
-    <div class="card text-center">
+    <div class="card text-center m-4 fondo-header">
       
-        <div class="card-body">
+        <div class="card-body p-5" >
             {% load static %}
-            <div style="background: red;">
-                <img src={% static 'logo.png' %} style="width: 300px;" alt="">
+            <div id="card-header">
+                <img src={% static 'img/logo2.png' %} style="max-width: 300px;" alt="">
             </div>
         </div>
-        <div class="card-footer text-body-secondary">
-          Lo mejor en flanes
-        </div>
-      </div>
+     
+    </div>
     
-
     {% endblock %}
+    
     {% block 'contenido' %}
     <div style="background: white;">
         contenido
@@ -62,14 +70,13 @@
     {% endblock %}
 
     {% block 'footer' %}
-    <footer class="footer mt-5">
-        <div class="card text-bg-success">
-                <div class="card-body">
-            <blockquote class="blockquote">
+    <footer class="footer mt-3">
+        <div class="card text-bg-dark">
+               
+            <blockquote class="blockquote m-2">
             <p>Footer Only Flans</p>
-            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-          </blockquote>
-        </div>
+             </blockquote>
+       
       </div>
     </footer>
     {% endblock %}

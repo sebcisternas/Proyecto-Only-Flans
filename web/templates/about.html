@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
-
 {% block 'contenido'%}
-<h1>Esto es contenido de about </h1>
-{% endblock %}
+<div class="container text-center">
+    <div class="container">
+        <h1 class="about-h1 m-4 text-info">Sobre Nosotros</h1></div>
+        {% load static %}<img src={% static 'img/about.png' %} style="max-width: 400px;" alt="">
+      <div class="col-8 mx-auto p-5">
+        <p class="about-paragraph">
+            Bienvenidos a OnlyFlans. En OnlyFlans, creamos flanes excepcionales con
+            ingredientes frescos y un toque de pasión artesanal. Cada bocado es una
+            experiencia única, cuidadosamente elaborada para deleitar tu paladar y
+            endulzar tus momentos especiales. Únete a nosotros en este viaje culinario
+            donde la calidad y el amor por los postres son nuestra firma distintiva.
+        </p>
+    </div>
+</div>
+{% endblock 'contenido' %}
