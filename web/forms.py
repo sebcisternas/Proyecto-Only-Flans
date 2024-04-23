@@ -1,5 +1,7 @@
 from django import forms
 from .models import ContactForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class ContactFormForm(forms.ModelForm):
     class Meta:
@@ -11,9 +13,14 @@ class ContactFormForm(forms.ModelForm):
             'message': 'Mensaje',
         }
     
-    """ customer_email = forms.EmailField(label='correo')
+    """ customer_email = forms.EmailField(label='correoeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
     customer_name  = forms.CharField(label='nombre')
     message = forms.CharField(label='mensaje',widget=forms.Textarea)
     
     """
     
+    
+class CustomUserCreationForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username','first_name',"last_name","email", "password1","password2"]

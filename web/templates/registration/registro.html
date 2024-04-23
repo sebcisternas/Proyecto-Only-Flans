@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block 'css' %}
+<link rel="stylesheet" href="/static/css/contact.css" />
+<style>
+    .requirements-message {
+        color: white; /* Cambiar el color del texto a blanco */
+    }
+</style>
+{% endblock %}
+{% block 'contenido' %}
+{% load crispy_forms_tags %}
+<div class="registration-form text-center text-white ">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="col-md-11 col-sm-10 mx-auto text-center" style="font-family: 'MaryKate', sans-serif;">
+            <h2>Registro de Usuario</h2>
+            <hr>
+        </div>
+        <div class="form-group mt-5 ">
+            {{ form.email|as_crispy_field }}
+            <div class="text-danger">{{ form.email.errors }}</div>
+        </div>
+        <div class="form-group">
+            {{ form.username|as_crispy_field }}
+            <div class="text-danger">{{ form.username.errors }}</div>
+        </div>
+        <div class="form-group">
+            {{ form.first_name|as_crispy_field }}
+            <div class="text-danger">{{ form.first_name.errors }}</div>
+        </div>
+        <div class="form-group">
+            {{ form.last_name|as_crispy_field }}
+            <div class="text-danger">{{ form.last_name.errors }}</div>
+        </div>
+        <div class="form-group">
+            {{ form.password1|as_crispy_field }}
+            <div class="text-danger">{{ form.password1.errors }}</div>
+        </div>
+        <div class="form-group">
+            {{ form.password2|as_crispy_field }}
+            <div class="text-danger">{{ form.password2.errors }}</div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="create-account btn btn-success">Registrar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

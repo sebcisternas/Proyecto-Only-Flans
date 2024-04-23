@@ -7,22 +7,25 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/marykate" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Farsan&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    {% block 'css' %} {% endblock%}
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="https://kit.fontawesome.com/11dbf52181.js" crossorigin="anonymous"></script>
+    
     <title>{% block 'title' %} Bienvenido a onlyflans {% endblock%}</title>
 </head>
 
 <body>
-
-    
+   
     {% block 'navbar' %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-success rounded text-center  ">
+    <nav class="navbar navbar-expand-lg navbar-light text-center" style="background-color: #32B0E0;">
         <div class="container-fluid">
             {% load static %}
-            <img src={% static 'img/logo2.png' %} style="width: 100px;" alt="">
+            <img src={% static 'img/logo2.png' %} style="width: 120px;" alt="">
             <!--<a class="navbar-brand" href="#">Onlyflans</a>-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -30,32 +33,55 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active " aria-current="page" href={% url "index" %}><i class="fa-solid fa-house px-2"></i></i></i>Inicio</a>
+                        <a class="nav-link active text-light " aria-current="page" href={% url "index" %}><i class="fa-solid fa-house px-2"></i></i></i>Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href={% url "about" %}><i class="fa-solid fa-circle-info px-2"></i>Acerca</a>
+                        <a class="nav-link active text-light" aria-current="page" href={% url "about" %}><i class="fa-solid fa-circle-info px-2"></i>Acerca</a>
                     </li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href={% url "welcome" %}><i class="fa-solid fa-door-open px-2"></i>Bienvenido</a>
+                        <a class="nav-link active text-light" aria-current="page" href={% url "welcome" %}><i class="fa-solid fa-door-open px-2"></i>Bienvenido</a>
                     </li>
+                    {% endif %}
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href={% url "contacto" %}><i class="fa-solid fa-address-book px-2"></i>Contacto</a>
+                        <a class="nav-link active text-light" aria-current="page" href={% url "contacto" %}><i class="fa-solid fa-address-book px-2"></i></i>Contacto</a>
                     </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item pt-2"> 
+                        <h4 class="user-name text-success mt-1 mx-auto">Bienvenido {{ user.username }}</h4>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket mx-2"></i>Cerrar sesión</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Iniciar Sesion</a> 
+                    </li>
+                    <li class="nav-item"><div class="nav-link">/</div></li>
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="{% url 'registro' %}">Registrarte</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
     {% endblock %}
 
+
+
+
     {% block 'header' %}
-    <div class="card text-center m-4 fondo-header">
-      
-        <div class="card-body p-5" >
+    <div class="card text-center fondo-header">
+        <div class="card-body" >
             {% load static %}
             <div id="card-header">
-                <img src={% static 'img/logo2.png' %} style="max-width: 300px;" alt="">
+                <img src={% static 'img/logo3.png' %} style="max-width: 300px;" alt="">
             </div>
         </div>
      
@@ -70,20 +96,69 @@
     {% endblock %}
 
     {% block 'footer' %}
-    <footer class="footer mt-3">
-        <div class="card text-bg-dark">
-               
-            <blockquote class="blockquote m-2">
-            <p>Footer Only Flans</p>
-             </blockquote>
+    
+    
+        <!-- Copyright -->
+        <div class="footer-clean">
+            <footer>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-4 col-md-3 item">
+                            <h3>Services</h3>
+                            <ul>
+                                <li><a href="#">Web design</a></li>
+                                <li><a href="#">Development</a></li>
+                                <li><a href="#">Hosting</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4 col-md-3 item">
+                            <h3>About</h3>
+                            <ul>
+                                <li><a href="#">Company</a></li>
+                                <li><a href="#">Team</a></li>
+                                <li><a href="#">Legacy</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4 col-md-3 item">
+                            <h3>Careers</h3>
+                            <ul>
+                                <li><a href="#">Job openings</a></li>
+                                <li><a href="#">Employee success</a></li>
+                                <li><a href="#">Benefits</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
+                            <p class="copyright">Company Name © 2018</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!-- Copyright -->
+      </footer>
+      <!-- Footer -->
+    </section>
        
-      </div>
-    </footer>
     {% endblock %}
 
     {% block 'javascript' %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages%}
+        {% for m in messages%}
+        <script style="font-family: 'MaryKate', sans-serif">
+            Swal.fire({
+            "title": "{{m.title}}",
+            "text":  "{{m}}",
+            "icon": "success"  
+        })
+        </script>
+        {%endfor%}
+    {%endif%}
+
+    
     {%endblock%}
+    
 </body>
 
 </html>

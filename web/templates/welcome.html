@@ -1,19 +1,56 @@
-{% extends 'base.html' %} {% block 'contenido'%}
-<h1 class="about-h1 text-center text-info">Bienvenido</h1>
-<div class="container-fluid d-flex justify-content-center " style="text-align: justify;">
-  <div class="row justify-content-center">
+{% extends 'base.html' %} 
+{% block 'contenido'%}
+<div class="row mx-auto col-3 text-center justify-content-center ">
+<h1 class="about-h1 text-center text-white mt-4 border border-dark rounded rounded-pill ">Bienvenido {{user.username}}</h1>
+</div>
+<div class="container-fluid justify-content-center text-info" style="text-align: justify;">
+  <div class="row justify-content-center  ">
     {% for flan in flanes %}
-    <div class="col-md-3 col-sm-2 m-2 p-4 m-4 justify-content-center ">
-      <div class="card" style="width: 18rem">
-        <img src="{{flan.image_url}}" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">{{flan.name}}</h5>
-          <p class="card-text">{{flan.descripcion}}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="col-md-3 col-sm-2 m-2 p-4 justify-content-center align-items-center text-center">
+      <div class="card mx-auto borderborder border-warning" style="width: 18rem">
+        <img src="{{ flan.image_url }}" class="img-fluid rounded" alt="..." style="width: 300px; height: 200px;">
+        <div class="card-body text-center">
+          <h3 class="card-title" style="">{{ flan.name }}</h3>
+          <!--<p class="card-text">{{ flan.descripcion }}</p>-->
+          <!-- Botón para abrir el modal -->
+          <button type="button" class="btn btn-danger mt-4 text-light">
+            Comprar
+          </button>
+          <button type="button" class="btn btn-info mt-4 text-light" data-bs-toggle="modal" data-bs-target="#flanModal{{ forloop.counter }}">
+            Ver
+          </button>
         </div>
       </div>
     </div>
-
+    
+    <!-- Modal -->
+    <div class="modal fade" id="flanModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="flanModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content ">
+          <div class="modal-header text-center ">
+            <h3 class="text-dark " id="flanModalLabel">{{ flan.name }}</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <img src="{{ flan.image_url }}" class="img-fluid" alt="">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 mt-4">
+                  <p class="text-dark">{{ flan.descripcion }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer text-center ">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
     {%endfor%}
   </div>
 </div>

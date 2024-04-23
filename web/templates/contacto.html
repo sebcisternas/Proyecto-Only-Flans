@@ -1,45 +1,50 @@
 {% extends 'base.html' %} 
+
+{% block 'css' %}<link rel="stylesheet" href="/static/css/contact.css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+
+{% endblock%}
 {% block 'contenido' %}
 
-<h1 class="about-h1 text-center text-info">Contacto</h1>
+<div class="registration-form text-center ">
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% load static %}
+    <div class= "col-md-9 col-sm-8 mx-auto text-center" >
+      <img src="{% static 'img/etiquetas/contactos.png' %}" alt="" class="mt-3 mb-5 img-fluid img-pequena ">
+    </div>
 
-<form method="POST">
-  {% csrf_token %} {{ form.non_field_errors }}
-
-  <div class="wrapper">
-    <div class="inputtext-wrapper inputtext inputtext--md">
-      <label for="customer_email">{{ form.customer_email.label_tag }}</label>
-      {{ form.customer_email }}
-      <i class="ti ti-check"></i>
+    <div class="form-group mt-5">
+      <input type="email" class="form-control item" id="email" name="customer_email" placeholder="Correo Electrónico">
       <div class="text-danger">{{form.customer_email.errors}}</div>
     </div>
-
-    <div class="inputtext-wrapper inputtext inputtext--md">
-      <label for="customer_name">{{form.customer_name.label_tag}}</label>
-      {{form.customer_name}}
-      <i class="ti ti-check"></i>
+    <div class="form-group">
+      <input type="text" class="form-control item" id="username" name="customer_name" placeholder="Nombre">
       <div class="text-danger">{{form.customer_name.errors}}</div>
     </div>
-
-    <div class="inputtext-wrapper inputtext inputtext--md">
-      <label for="message">{{form.message.label_tag}}</label>
-      {{form.message}}
-      <i class="ti ti-check"></i>
+    <div class="form-group">
+      <textarea class="form-control item" id="message" name="message" placeholder="Mensaje"></textarea>
       <div class="text-danger">{{form.message.errors}}</div>
-
     </div>
-
-    <div class="btn-primary m-4">
-      <button type="submit" class="button button--md button--filled button--primary button--full">
-        <span class="button-label">Enviar</span>
-      </button>
+    <div class="form-group ">
+      <button type="submit" class="create-account">Enviar</button>
     </div>
-
+  </form>
+  <div class="social-media" >
+    <h3 class"text-info" >O escribenos</h3>
+    <div class="col-md-12 col-sm-8">
+      <!-- Widget de Facebook Like Box -->
+      <div class="fb-like-box" data-href="https://www.facebook.com/profile.php?id=61558728599016" data-width="500"
+        data-height="300" data-colorscheme="dark" data-show-faces="true" data-header="false"
+        data-stream="false" data-show-border="false" data-appId="TU_APP_ID">
+      </div>
+    </div>
   </div>
-</form>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0&appId=YOUR_APP_ID&autoLogAppEvents=1" nonce="YOUR_NONCE"></script>
+
 {% endblock 'contenido' %}
-
-
-
-
 

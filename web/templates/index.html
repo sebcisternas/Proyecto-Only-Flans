@@ -1,23 +1,96 @@
-{% extends 'base.html' %} {% block 'contenido'%}
-<h1 class="about-h1 text-center text-info">Nuestros Productos</h1>
+{% extends 'base.html' %} 
+
+{% block 'contenido' %}
+{% load static %}
 <div class="container-fluid d-flex justify-content-center text-info" style="text-align: justify;">
- 
   <div class="row justify-content-center ">
-    
+    <div class="col-md-11 col-sm-8">
+      <img src="{% static 'img/etiquetas/nuestros.png' %}" alt="" class="mt-5 mb-5 img-fluid img-pequena">
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid d-flex justify-content-center text-info" style="text-align: justify;">
+   <div class="row justify-content-center  ">
+    <div class="row">
+    <form id="searchForm" action="#" method="get" class="col-4 mb-4 mx-auto">
+      <div class="input-group">
+        <input type="text" id="searchInput" name="q" class="form-control" placeholder="Buscar...">
+        <button type="submit" class="btn btn-info text-light">Buscar</button>
+      </div>
+    </form>
+  </div>
     {% for flan in flanes %}
-    <div class="col-md-2 col-sm-2 m-2 p-4 justify-content-center align-items-center">
-      <div class="card" style="width: 18rem">
-        <img src="{{flan.image_url}}" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">{{flan.name}}</h5>
-          <p class="card-text">{{flan.descripcion}}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="col-md-3 col-sm-2 m-2 p-4 justify-content-center align-items-center text-center flan-card" data-name="{{ flan.name }}">
+      <div class="card mx-auto border border-warning" style="width: 18rem">
+        <img src="{{ flan.image_url }}" class="img-fluid rounded" alt="..." style="width: 300px; height: 200px;">
+        <div class="card-body text-center">
+          <h3 class="card-title">{{ flan.name }}</h3>
+          <h4 class="card-text">Precio: $ {{ flan.price|floatformat:"0" }}</h4>
+          <!-- Botón para abrir el modal -->
+          <button type="button" class="btn btn-danger mt-4 text-light">
+            Agregar al carrito
+          </button>
+          <button type="button" class="btn btn-info mt-4 text-light" data-bs-toggle="modal" data-bs-target="#flanModal{{ forloop.counter }}">
+            Detalle
+          </button>
         </div>
       </div>
     </div>
 
-    {%endfor%}
+    <!-- Modal -->
+    <div class="modal fade" id="flanModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="flanModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h3 class="text-dark" id="flanModalLabel">{{ flan.name }}</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <img src="{{ flan.image_url }}" class="img-fluid" alt="">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 mt-4">
+                  <p class="text-dark">{{ flan.descripcion }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 mt-4">
+                  <h4 class="card-text">Precio: $ {{ flan.price|floatformat:"0" }}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer text-center">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
   </div>
 </div>
-  {% endblock %}
-</div>
+
+<script>
+  document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evitar que se envíe el formulario
+    var query = document.getElementById('searchInput').value.trim().toLowerCase();
+    var flanes = document.getElementsByClassName('flan-card');
+
+    for (var i = 0; i < flanes.length; i++) {
+      var nombreFlan = flanes[i].getAttribute('data-name').toLowerCase();
+      if (nombreFlan.includes(query)) {
+        flanes[i].style.display = '';
+      } else {
+        flanes[i].style.display = 'none';
+      }
+    }
+  });
+</script>
+
+{% endblock 'contenido' %}
+
