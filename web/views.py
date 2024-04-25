@@ -1,12 +1,12 @@
 from django.shortcuts import render,redirect
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
-from .models import Flan
+from .models import Flan, Carrito, ItemCarrito
 from .forms import ContactFormForm,CustomUserCreationForm
 from django.contrib.auth.views import LoginView,LogoutView
 from django.contrib.auth.decorators import login_required #para que los usuarios logueados pueda ver la pagina que tenga el decorativo
 from django.contrib.auth import authenticate, login
-from django.http import JsonResponse
+
 # Create your views here.
 
 def index(request):
@@ -69,3 +69,9 @@ class CustomLogoutView(LogoutView):
     next_page = '/'
     
 
+def agregar_al_carrito(request, flan_id):
+    return redirect('index')
+
+
+def carrito(request):
+    return render(request, 'carrito.html')

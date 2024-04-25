@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include,re_path
-from web.views import index,welcome,about,contacto,exito,registro,error_404
+from web.views import index,welcome,about,contacto,exito,registro,error_404,carrito,agregar_al_carrito
 from web import views
 
 
@@ -31,6 +31,7 @@ urlpatterns = [
     path('registration/',include("django.contrib.auth.urls")),
     path('flan/<int:flan_id>/',views.flan_detail,name= "detalle"),
     path('registro/',registro,name="registro"),
-    re_path(r'^.*$', views.error_404),
+    path('agregar_al_carrito/<int:flan_id>/', agregar_al_carrito, name='agregar_al_carrito'),
+    path('carrito/',carrito, name='carrito'),
     
 ]

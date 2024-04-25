@@ -32,3 +32,24 @@ class ContactForm(models.Model):
     def __str__(self):
        return self.customer_name
     
+
+class Carrito(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    # Puedes agregar otros campos si los necesitas, como total, dirección de envío, etc.
+    
+    def __str__(self):
+        return f"Carrito de {self.user.username}"
+     
+class ItemCarrito(models.Model):
+    carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE)
+    flan = models.ForeignKey(Flan, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)
+    precio_unitario = models.DecimalField(max_digits=10, decimal_places=2)
+    # Puedes agregar otros campos si los necesitas, como descuentos, etc.
+
+    def subtotal(self):
+        return self.cantidad * self.precio_unitario
+    
+    def __str__(self):
+        return f"{self.cantidad} x {self.flan.name} en {self.carrito}"

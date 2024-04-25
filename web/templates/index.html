@@ -27,10 +27,17 @@
         <div class="card-body text-center">
           <h3 class="card-title">{{ flan.name }}</h3>
           <h4 class="card-text">Precio: $ {{ flan.price|floatformat:"0" }}</h4>
+
+          
+            <input type="hidden" name="precio_unitario" value="{{ flan.price }}">
+            
+            {% if user.is_authenticated %}
+            <button type="submit" class="btn btn-danger mt-4 text-light">
+                Agregar al carrito
+            </button>
+            {% endif %}
           <!-- Botón para abrir el modal -->
-          <button type="button" class="btn btn-danger mt-4 text-light">
-            Agregar al carrito
-          </button>
+          
           <button type="button" class="btn btn-info mt-4 text-light" data-bs-toggle="modal" data-bs-target="#flanModal{{ forloop.counter }}">
             Detalle
           </button>
@@ -76,16 +83,27 @@
 </div>
 
 <script>
+  // selecciona el formulario de búsqueda por su ID y agrega un "escuchador de eventos" para el evento de envío (submit)
   document.getElementById('searchForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar que se envíe el formulario
+    event.preventDefault(); // Evita que el formulario se envíe y la página se recargue
+
+    // obtiene el valor del campo de búsqueda, lo limpia de espacios en blanco al inicio y al final, y lo convierte a minúsculas
     var query = document.getElementById('searchInput').value.trim().toLowerCase();
+
+    // obtiene todas las tarjetas de flan (elementos con la clase 'flan-card')
     var flanes = document.getElementsByClassName('flan-card');
 
+    // itera sobre todas las tarjetas de flan para realizar la búsqueda
     for (var i = 0; i < flanes.length; i++) {
+      // obtiene el nombre del flan de cada tarjeta de flan, también en minúsculas
       var nombreFlan = flanes[i].getAttribute('data-name').toLowerCase();
+
+      // verifica si el nombre del flan incluye la consulta de búsqueda
       if (nombreFlan.includes(query)) {
+        // si el nombre del flan coincide con la búsqueda, muestra la tarjeta de flan estableciendo su estilo de visualización como vacío ('')
         flanes[i].style.display = '';
       } else {
+        // si el nombre del flan no coincide con la búsqueda, oculta la tarjeta de flan estableciendo su estilo de visualización como 'none'
         flanes[i].style.display = 'none';
       }
     }

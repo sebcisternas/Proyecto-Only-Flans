@@ -52,7 +52,7 @@
                 <ul class="navbar-nav ml-auto">
                     {% if user.is_authenticated %}
                     <li class="nav-item pt-2"> 
-                        <h4 class="user-name text-success mt-1 mx-auto">Bienvenido {{ user.username }}</h4>
+                        <h4 class="user-name text-light mt-1 mx-auto">Bienvenido {{ user.username }}</h4>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket mx-2"></i>Cerrar sesión</a>
@@ -128,8 +128,14 @@
                             </ul>
                         </div>
                         <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
-                            <p class="copyright">Company Name © 2018</p>
+                            <p class="copyright">Sebastian Cisternas Ocaranza</p>
+                            <audio id="audioPlayer" controls autoplay class="m-4">
+                                <source src="{% static 'audio/cancion.mp3' %}" type="audio/mpeg">
+                                Tu navegador no soporta el elemento de audio.
+                            </audio>
+    
                         </div>
+                        
                     </div>
                 </div>
             </footer>
@@ -142,6 +148,14 @@
     {% endblock %}
 
     {% block 'javascript' %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var audioPlayer = document.getElementById('audioPlayer');
+            if (audioPlayer !== null) {
+                audioPlayer.play();
+            }
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {% if messages%}
