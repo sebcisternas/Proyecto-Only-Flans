@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True if os.getenv('DEBUG')=='True' else False
 
 
-ALLOWED_HOSTS = ['127.0.0.1','Proyecto-Only-Flans.onrender.com','*']
+ALLOWED_HOSTS = ['127.0.0.1','onlyflansproyect.onrender.com']
 CSRF_TRUSTED_ORIGINS = ['https://onlyflansproyect.onrender.com']
 
 
