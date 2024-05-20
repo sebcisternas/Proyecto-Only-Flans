@@ -33,6 +33,8 @@ ALLOWED_HOSTS = ['127.0.0.1','Proyecto-Only-Flans.onrender.com','*']
 CSRF_TRUSTED_ORIGINS = ['https://onlyflansproyect.onrender.com']
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
