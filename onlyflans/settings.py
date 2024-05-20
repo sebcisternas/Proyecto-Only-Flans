@@ -50,8 +50,6 @@ INSTALLED_APPS = [
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 #Crispy forms function
-CRISPY_TEMPLATE_PACK = 'Bootstrap5'
-
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
