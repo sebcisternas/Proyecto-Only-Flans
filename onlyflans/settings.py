@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True if os.getenv('DEBUG')=='True' else False
 
 
-ALLOWED_HOSTS = ['Proyecto-Only-Flans.onrender.com','*']
+ALLOWED_HOSTS = ['onlyflansproyect.onrender.com','*']
 
 
 
